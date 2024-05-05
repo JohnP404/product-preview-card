@@ -1,0 +1,136 @@
+@use 'variables' as *;
+@use 'resets';
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
+
+@mixin screen-min($min) {
+   @media (min-width: $min) {
+      @content
+   }
+}
+
+;
+
+@mixin flex($justify: center) {
+   display: flex;
+   align-items: center;
+   justify-content: $justify;
+}
+
+:root {
+   @include screen-min(1160px) {
+      font-size: 18px;
+   }
+}
+
+
+body {
+   background: $cream;
+   @include flex();
+   height: 100vh;
+   height: 100svh;
+   max-height: 100%;
+}
+
+p {
+   font-size: 14px;
+}
+
+.title {
+   color: $dark-grayish-blue;
+   font-size: .9rem;
+   font-weight: 500;
+   text-transform: uppercase;
+   letter-spacing: .3rem;
+}
+
+.perfume-name {
+   font-family: 'Fraunces', serif;
+   font-size: 2rem;
+   line-height: 2rem;
+   margin: 1rem 0;
+   color: $Very-dark-blue;
+}
+
+.price__container {
+   @include flex(flex-start);
+   gap: .6rem;
+   margin: 1rem 0;
+
+   span:nth-child(1) {
+      font-family: 'Fraunces', serif;
+      color: $dark-cyan;
+      font-size: 2rem;
+   }
+
+   span:nth-child(2) {
+      text-decoration: line-through;
+   }
+}
+
+.cart-btn {
+   border: 0;
+   outline: 0;
+   border-radius: .6em;
+   font-weight: 700;
+   font-size: 1.15rem;
+   background-color: $dark-cyan;
+   color: $white;
+   padding: .8em;
+   gap: .4rem;
+   width: 100%;
+   @include flex();
+
+   &:hover {
+      transition: .3s;
+      background-color: darken($dark-cyan, 20%);
+   }
+}
+
+#desktop-image {
+   display: none;
+   border-radius: .6rem 0 0 .6rem;
+   max-height: 445px;
+
+   @include screen-min(1160px) {
+      display: block;
+   }
+}
+
+#mobile-image {
+   border-radius: .6rem .6rem 0 0;
+
+   @include screen-min(1160px) {
+      display: none;
+   }
+}
+
+.preview-container {
+   background-color: $white;
+   border-radius: .6rem;
+   width: 50vmax;
+   max-width: 380px;
+   margin: 0 auto;
+
+   @include screen-min(1160px) {
+      @include flex();
+      width: 50vmax;
+      max-width: 600px;
+   }
+
+   .img__container {
+      @include screen-min(1160px) {
+         width: 50%;
+      }
+   }
+
+   .text__container {
+      font-family: 'Montserrat', serif;
+      color: $dark-grayish-blue;
+      padding: 1.2rem;
+
+      @include screen-min(1160px) {
+         padding: 0 1.5rem;
+         width: 50%;
+      }
+   }
+}
